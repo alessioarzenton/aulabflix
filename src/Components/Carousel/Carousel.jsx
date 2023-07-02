@@ -4,23 +4,23 @@ import CardCarousel from './../CardCarousel/CardCarousel.jsx';
 
 const items = [
     {
-        icon:"face",
-        copy:'01. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        backdrop_path:"https://placehold.co/600x400",
+        title:'01. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
     },{
-        icon:"pets",
-        copy:'02. Sed do eiusmod tempor incididunt ut labore.'
+        backdrop_path:"https://placehold.co/600x400",
+        title:'02. Sed do eiusmod tempor incididunt ut labore.'
     },{
-        icon:"stars",
-        copy:'03. Consectetur adipiscing elit.'
+        backdrop_path:"https://placehold.co/600x400",
+        title:'03. Consectetur adipiscing elit.'
     },{
-        icon:"invert_colors",
-        copy:'04. Ut enim ad minim veniam, quis nostrud exercitation.'
+        backdrop_path:"https://placehold.co/600x400",
+        title:'04. Ut enim ad minim veniam, quis nostrud exercitation.'
     },{
-        icon:"psychology",
-        copy:'05. Llamco nisi ut aliquip ex ea commodo consequat.'
+        backdrop_path:"https://placehold.co/600x400",
+        title:'05. Llamco nisi ut aliquip ex ea commodo consequat.'
     },{
-        icon:"brightness_7",
-        copy:'06. Misi ut aliquip ex ea commodo consequat.'
+        backdrop_path:"https://placehold.co/600x400",
+        title:'06. Misi ut aliquip ex ea commodo consequat.'
     }
 ];
 

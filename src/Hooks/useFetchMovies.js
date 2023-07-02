@@ -12,7 +12,7 @@ const useFetchMovies = (url, defaultData) => {
         .catch(err => console.log(err))
     }, [url]);
 
-    return {data, setData};
+    return { data };
 };
 
 export default useFetchMovies
