@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 
 const useFetchMovies = (url, defaultData) => {
-
     const [data, setData] = useState(defaultData);
+    const [loading,setLoading] = useState(false);
 
     // useEffect se cambia l'url
     useEffect(() => {
-        fetch(url)
-        .then(res => res.json())
-        .then(datas => setData(datas))
-        .catch(err => console.log(err))
-    }, [url]);
+        const fetchData = async () => {
+            setLoading(true);
+            const res = await fetch(
+                url
+            );
+            const { results } = await res.json();
+            setData(results);
+            setLoading(false);
+        };
 
-    return { data };
+        fetchData();
+    }, [url])
+
+    return { data, loading };
 };
 
-export default useFetchMovies
+export default useFetchMovies;

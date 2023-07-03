@@ -1,6 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import useFetchMovies from "../../Hooks/useFetchMovies";
+import useFetchMovies from "./../../Hooks/useFetchMovies";
 
 const responsive = {
     desktop: {
@@ -17,12 +17,11 @@ const responsive = {
     },
 };
 
-const Slider = ({title, genre}) => {
-
-    const url = `https://api.themoviedb.org/3/movie/${genre}?language=it-IT&api_key=45889e342ed076bf952461d661d468d8`;
+const Slider = ({ title, genre }) => {
+    const url = `https://api.themoviedb.org/3/movie/${genre}?language=it-IT&api_key=a5b2c96f4f69542ba0a127cba0f1745c`;
     const { data } = useFetchMovies(url, []);
 
-    // console.log(data.results);
+    // console.log(data);
 
     return (
         <div className="slider-parent mb-3 mb-md-5">
@@ -34,18 +33,25 @@ const Slider = ({title, genre}) => {
                 autoPlay={true}
                 swipeable={true}
                 draggable={true}
-                showDots={true}
+                showDots={false}
                 infinite={true}
                 partialVisible={false}
                 dotListClass="custom-dot-list-style"
             >
-                {data && data.results.map((el) => {
-                    return (
-                        <div className="slider" key={el.id}>
-                            <img src={'https://image.tmdb.org/t/p/original' + el.poster_path} alt="movie" />
-                        </div>
-                    );
-                })}
+                {data &&
+                    data.map((el) => {
+                        return (
+                            <div className="slider" key={el.id}>
+                                <img
+                                    src={
+                                        "https://image.tmdb.org/t/p/original" +
+                                        el.poster_path
+                                    }
+                                    alt="movie"
+                                />
+                            </div>
+                        );
+                    })}
             </Carousel>
         </div>
     );
