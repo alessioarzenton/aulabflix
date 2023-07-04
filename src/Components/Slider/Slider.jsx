@@ -49,6 +49,7 @@ const Slider = ({ title, genre }) => {
                                     }
                                     alt="movie"
                                 />
+                                <div className="vote">{el.vote_average}</div>
                             </div>
                         );
                     })}
