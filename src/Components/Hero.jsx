@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Hero() {
     return <>
         <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">

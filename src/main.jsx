@@ -4,11 +4,12 @@ import App from './App.jsx'
 import './main.scss'
 // Import all of Bootstrap's JS
 import 'bootstrap'
-import Navbar from './Components/Navbar.jsx'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Navbar />
-    <App />
+    <BrowserRouter basename="/">
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 )
