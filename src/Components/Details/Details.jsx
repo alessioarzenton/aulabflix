@@ -54,8 +54,9 @@ function Details() {
                                 ) : (
                                     <img
                                         className="img-fluid"
-                                        src="https://placehold.co/600x600"
-                                        alt=""
+                                        src="https://placehold.co/600x400"
+                                        alt="movie"
+                                        style={{ borderRadius: "10px" }}
                                     />
                                 )}
                                 {post.status && (
@@ -65,7 +66,8 @@ function Details() {
                                 )}
                                 {post.vote_average && (
                                     <div className="mt-2 text-danger lead">
-                                        Voto: <b>{post.vote_average}</b>
+                                        Voto:{" "}
+                                        <b>{post.vote_average.toFixed(1)}</b>
                                     </div>
                                 )}
                                 {post.original_title && (
@@ -74,9 +76,17 @@ function Details() {
                                     </h1>
                                 )}
                                 {post.overview && <p>{post.overview}</p>}
-                                <Link to="/" className="btn btn-info mt-3">
-                                    Torna
-                                </Link>
+                                <div className="d-flex">
+                                    <Link to="/" className="btn btn-info mt-3 me-3">
+                                        Vai alla home
+                                    </Link>
+                                    <Link
+                                        to="/search"
+                                        className="btn btn-success mt-3"
+                                    >
+                                        Vai alla Ricerca
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

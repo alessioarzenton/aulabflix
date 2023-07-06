@@ -65,7 +65,7 @@ const Slider = ({ title, genre }) => {
                                             alt="movie"
                                         />
                                         <div className="vote">
-                                            <span>{el.vote_average}</span>
+                                            <span>{(el.vote_average).toFixed(1)}</span>
                                         </div>
                                     </Link>
                                 </div>
