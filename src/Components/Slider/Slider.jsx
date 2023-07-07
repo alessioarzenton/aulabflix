@@ -37,7 +37,7 @@ const Slider = ({ title, genre }) => {
                     radius={1}
                     color="#ffffff"
                     ariaLabel="puff-loading"
-                    wrapperStyle={{'margin' : '20px auto'}}
+                    wrapperStyle={{ margin: "20px auto" }}
                     wrapperClass="justify-content-center"
                     visible={true}
                 />
@@ -64,9 +64,13 @@ const Slider = ({ title, genre }) => {
                                             }
                                             alt="movie"
                                         />
-                                        <div className="vote">
-                                            <span>{(el.vote_average).toFixed(1)}</span>
-                                        </div>
+                                        {el.vote_average > 0 && (
+                                            <div className="vote">
+                                                <span>
+                                                    {el.vote_average.toFixed(1)}
+                                                </span>
+                                            </div>
+                                        )}
                                     </Link>
                                 </div>
                             );

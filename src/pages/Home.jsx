@@ -1,4 +1,4 @@
-import Hero from "../Components/Hero";
+import Hero from "../Components/Hero/Hero";
 import Slider from "../Components/Slider/Slider";
 
 function Home() {

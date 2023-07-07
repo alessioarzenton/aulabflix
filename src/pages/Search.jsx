@@ -24,20 +24,18 @@ function Search() {
         <>
             <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
                 <div className="col-md-6 p-lg-5 mx-auto my-5">
-                    <h1 className="display-3 fw-bold">Aulab Movies</h1>
-                    <h3 className="fw-normal mb-3">
-                        Cerca il film che desideri
-                    </h3>
                     <div className="d-flex gap-3 justify-content-center lead fw-normal">
                         <div className="d-flex">
                             <input
                                 className="form-control me-2"
                                 type="text"
-                                placeholder="stranger things..."
+                                placeholder="star w..."
                                 aria-label="Search"
                                 onChange={(e) => setQuery(e.target.value)}
                             />
-                            <Link to="/" className="btn btn-danger">Home</Link>
+                            <Link to="/" className="btn btn-dark">
+                                Home
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -73,13 +71,15 @@ function Search() {
                                                     alt="movie"
                                                     className="img-fluid"
                                                 />
-                                                <div className="vote">
-                                                    <span>
-                                                        {el.vote_average.toFixed(
-                                                            1
-                                                        )}
-                                                    </span>
-                                                </div>
+                                                {el.vote_average > 0 && (
+                                                    <div className="vote">
+                                                        <span>
+                                                            {el.vote_average.toFixed(
+                                                                1
+                                                            )}
+                                                        </span>
+                                                    </div>
+                                                )}
                                             </Link>
                                         </div>
                                     </div>

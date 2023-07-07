@@ -18,7 +18,7 @@ function Details() {
             });
     }, [url]);
 
-    console.log(post.original_title);
+    console.log(post);
     return (
         <>
             {loading ? (
@@ -64,7 +64,7 @@ function Details() {
                                         Status: <b>{post.status}</b>
                                     </div>
                                 )}
-                                {post.vote_average && (
+                                {post.vote_average > 0 && (
                                     <div className="mt-2 text-danger lead">
                                         Voto:{" "}
                                         <b>{post.vote_average.toFixed(1)}</b>
@@ -72,17 +72,17 @@ function Details() {
                                 )}
                                 {post.original_title && (
                                     <h1 className="h1">
-                                        {post.original_title}
+                                        {post.title}
                                     </h1>
                                 )}
                                 {post.overview && <p>{post.overview}</p>}
                                 <div className="d-flex">
-                                    <Link to="/" className="btn btn-info mt-3 me-3">
+                                    <Link to="/" className="btn btn-dark mt-3 me-3">
                                         Vai alla home
                                     </Link>
                                     <Link
                                         to="/search"
-                                        className="btn btn-success mt-3"
+                                        className="btn btn-danger mt-3"
                                     >
                                         Vai alla Ricerca
                                     </Link>
