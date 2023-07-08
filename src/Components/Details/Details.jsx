@@ -4,7 +4,7 @@ import { Puff } from "react-loader-spinner";
 
 function Details() {
     const { id } = useParams();
-    const url = `https://api.themoviedb.org/3/movie/${id}?language=it-IT&api_key=a5b2c96f4f69542ba0a127cba0f1745c`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?language=it-IT&api_key=${import.meta.env.VITE_API_KEY}`;
     const [post, setPost] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -18,7 +18,8 @@ function Details() {
             });
     }, [url]);
 
-    console.log(post);
+    // console.log(post);
+    
     return (
         <>
             {loading ? (

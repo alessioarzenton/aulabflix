@@ -8,7 +8,7 @@ function Search() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const debounceSearched = useDebounce(query, 2000);
+    const debounceSearched = useDebounce(query, 1000);
 
     useEffect(() => {
         setLoading(true);
@@ -18,7 +18,7 @@ function Search() {
         });
     }, [debounceSearched]);
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <>
@@ -102,7 +102,7 @@ export default Search;
 
 function API(searched) {
     return fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${searched}&include_adult=false&language=it-IT&api_key=a5b2c96f4f69542ba0a127cba0f1745c`
+        `https://api.themoviedb.org/3/search/movie?query=${searched}&include_adult=false&language=it-IT&api_key=${import.meta.env.VITE_API_KEY}`
     )
         .then((r) => r.json())
         .then((r) => r.results)
