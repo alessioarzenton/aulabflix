@@ -24,20 +24,27 @@ function Search() {
         <>
             <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
                 <div className="col-md-6 p-lg-5 mx-auto my-5">
-                    <h1 className="display-3 fw-bold text-danger mb-2">AULABFLIX</h1>
-                    <div className="d-flex gap-3 justify-content-center lead fw-normal">
-                        <div className="d-flex">
-                            <input
-                                className="form-control me-2"
-                                type="text"
-                                placeholder="star w..."
-                                aria-label="Search"
-                                onChange={(e) => setQuery(e.target.value)}
-                            />
-                            <Link to="/" className="btn btn-dark">
-                                Home
-                            </Link>
-                        </div>
+                    <h1 className="display-3 fw-bold text-danger mb-2">
+                        AULABFLIX
+                    </h1>
+                    <div className="d-flex gap-2 justify-content-center lead fw-normal">
+                        <input
+                            className="form-control"
+                            type="text"
+                            placeholder="star w..."
+                            aria-label="Search"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                        />
+                        <button
+                            className="btn btn-info"
+                            onClick={() => setQuery("")}
+                        >
+                            Reset
+                        </button>
+                        <Link to="/" className="btn btn-dark">
+                            Home
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -56,7 +63,7 @@ function Search() {
                 <section className="card-list">
                     <div className="container-fluid">
                         <div className="row">
-                            {data && (
+                            {data &&
                                 data.map((el) => (
                                     <div
                                         className="col-12 col-md-6 col-lg-4 col-xl-3"
@@ -88,8 +95,7 @@ function Search() {
                                             </Link>
                                         </div>
                                     </div>
-                                ))
-                            )}
+                                ))}
                         </div>
                     </div>
                 </section>
@@ -102,7 +108,9 @@ export default Search;
 
 function API(searched) {
     return fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${searched}&include_adult=false&language=it-IT&api_key=${import.meta.env.VITE_API_KEY}`
+        `https://api.themoviedb.org/3/search/movie?query=${searched}&include_adult=false&language=it-IT&api_key=${
+            import.meta.env.VITE_API_KEY
+        }`
     )
         .then((r) => r.json())
         .then((r) => r.results)
