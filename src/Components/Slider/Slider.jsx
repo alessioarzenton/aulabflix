@@ -26,7 +26,7 @@ const Slider = ({ title, genre }) => {
     console.log(data);
 
     return (
-        <div className="slider-parent mb-3 mb-md-5">
+        <div className="slider-parent">
             <div className="container">
                 <h2>{title}</h2>
             </div>
@@ -57,13 +57,17 @@ const Slider = ({ title, genre }) => {
                             return (
                                 <div className="slider" key={el.id}>
                                     <Link to={`/details/${el.id}`}>
-                                        <img
-                                            src={
-                                                "https://image.tmdb.org/t/p/original" +
-                                                el.poster_path
-                                            }
-                                            alt="movie"
-                                        />
+                                        {el.poster_path ? (
+                                            <img
+                                                src={
+                                                    "https://image.tmdb.org/t/p/original" +
+                                                    el.poster_path
+                                                }
+                                                alt="movie"
+                                            />
+                                        ) : (
+                                            <img src="https://placehold.co/400x600?text=Movie+Image" />
+                                        )}
                                         {el.vote_average > 0 && (
                                             <div className="vote">
                                                 <span>

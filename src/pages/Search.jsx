@@ -18,12 +18,13 @@ function Search() {
         });
     }, [debounceSearched]);
 
-    // console.log(data);
+    console.log(data);
 
     return (
         <>
             <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
                 <div className="col-md-6 p-lg-5 mx-auto my-5">
+                    <h1 className="display-3 fw-bold text-danger mb-2">AULABFLIX</h1>
                     <div className="d-flex gap-3 justify-content-center lead fw-normal">
                         <div className="d-flex">
                             <input
@@ -55,7 +56,7 @@ function Search() {
                 <section className="card-list">
                     <div className="container-fluid">
                         <div className="row">
-                            {data ? (
+                            {data && (
                                 data.map((el) => (
                                     <div
                                         className="col-12 col-md-6 col-lg-4 col-xl-3"
@@ -63,14 +64,18 @@ function Search() {
                                     >
                                         <div className="wrapper">
                                             <Link to={`/details/${el.id}`}>
-                                                <img
-                                                    src={
-                                                        "https://image.tmdb.org/t/p/original" +
-                                                        el.poster_path
-                                                    }
-                                                    alt="movie"
-                                                    className="img-fluid"
-                                                />
+                                                {el.poster_path ? (
+                                                    <img
+                                                        src={
+                                                            "https://image.tmdb.org/t/p/original" +
+                                                            el.poster_path
+                                                        }
+                                                        alt="movie"
+                                                        className="img-fluid"
+                                                    />
+                                                ) : (
+                                                    <img src="https://placehold.co/400x600?text=Movie+Image" />
+                                                )}
                                                 {el.vote_average > 0 && (
                                                     <div className="vote">
                                                         <span>
@@ -84,10 +89,6 @@ function Search() {
                                         </div>
                                     </div>
                                 ))
-                            ) : (
-                                <div className="col-12 text-center">
-                                    <h3>Nessun Risultato, riprova!</h3>
-                                </div>
                             )}
                         </div>
                     </div>

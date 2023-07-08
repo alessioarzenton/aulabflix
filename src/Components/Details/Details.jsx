@@ -54,7 +54,7 @@ function Details() {
                                 ) : (
                                     <img
                                         className="img-fluid"
-                                        src="https://placehold.co/600x400"
+                                        src="https://placehold.co/600x400?text=Movie+Image"
                                         alt="movie"
                                         style={{ borderRadius: "10px" }}
                                     />
