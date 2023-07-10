@@ -43,7 +43,7 @@ function Details() {
                     visible={true}
                 />
             ) : (
-                <section className="details py-5">
+                <section className="details">
                     <div className="container">
                         <div className="row">
                             <div className="col-12 col-md-7">
@@ -76,28 +76,28 @@ function Details() {
                                         <b>{post.vote_average.toFixed(1)}</b>
                                     </div>
                                 )}
-                                <div className="star">
+                                <div className="star mt-2">
                                     {post.fav ? (
                                         <BsStarFill
-                                            onClick={() => handleFavourite(post)}
+                                            style={{ cursor: "pointer" }}
+                                            onClick={() =>
+                                                handleFavourite(post)
+                                            }
                                         />
                                     ) : (
                                         <BsStar
-                                            onClick={() => handleFavourite(post)}
+                                            style={{ cursor: "pointer" }}
+                                            onClick={() =>
+                                                handleFavourite(post)
+                                            }
                                         />
                                     )}
                                 </div>
                                 {post.original_title && (
-                                    <h1 className="h1">{post.title}</h1>
+                                    <h1 className="mt-2">{post.title}</h1>
                                 )}
                                 {post.overview && <p>{post.overview}</p>}
                                 <div className="d-flex">
-                                    <Link
-                                        to="/"
-                                        className="btn btn-dark mt-3 me-3"
-                                    >
-                                        Vai alla home
-                                    </Link>
                                     <Link
                                         to="/search"
                                         className="btn btn-danger mt-3"

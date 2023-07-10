@@ -45,9 +45,6 @@ function Search() {
                         >
                             Reset
                         </button>
-                        <Link to="/" className="btn btn-dark">
-                            Home
-                        </Link>
                     </div>
                 </div>
             </div>
