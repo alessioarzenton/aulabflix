@@ -3,6 +3,9 @@ import "react-multi-carousel/lib/styles.css";
 import useFetchMovies from "./../../Hooks/useFetchMovies";
 import { Link } from "react-router-dom";
 import { Puff } from "react-loader-spinner";
+import { BsStar, BsStarFill } from "react-icons/bs";
+import { useContext } from "react";
+import { Context } from "../../Context/Wishlist";
 
 const responsive = {
     desktop: {
@@ -20,7 +23,10 @@ const responsive = {
 };
 
 const Slider = ({ title, genre }) => {
-    const url = `https://api.themoviedb.org/3/movie/${genre}?language=it-IT&api_key=${import.meta.env.VITE_API_KEY}`;
+
+    const url = `https://api.themoviedb.org/3/movie/${genre}?language=it-IT&api_key=${
+        import.meta.env.VITE_API_KEY
+    }`;
     const { data, loading } = useFetchMovies(url, []);
 
     // console.log(data);
@@ -57,24 +63,29 @@ const Slider = ({ title, genre }) => {
                             return (
                                 <div className="slider" key={el.id}>
                                     <Link to={`/details/${el.id}`}>
-                                        {el.poster_path ? (
-                                            <img
-                                                src={
-                                                    "https://image.tmdb.org/t/p/original" +
-                                                    el.poster_path
-                                                }
-                                                alt="movie"
-                                            />
-                                        ) : (
-                                            <img src="https://placehold.co/400x600?text=Movie+Image" />
-                                        )}
-                                        {el.vote_average > 0 && (
-                                            <div className="vote">
-                                                <span>
-                                                    {el.vote_average.toFixed(1)}
-                                                </span>
-                                            </div>
-                                        )}
+                                    {el.poster_path ? (
+                                        <img
+                                            src={
+                                                import.meta.env
+                                                    .VITE_POSTER_PATH +
+                                                el.poster_path
+                                            }
+                                            alt="movie"
+                                        />
+                                    ) : (
+                                        <img src="https://placehold.co/400x600?text=Movie+Image" />
+                                    )}
+                                    {el.vote_average > 0 && (
+                                        <div className="vote">
+                                            <span>
+                                                {el.vote_average.toFixed(1)}
+                                            </span>
+                                        </div>
+                                    )}
+                                    <div className="star">
+                                        <BsStarFill
+                                        />
+                                    </div>
                                     </Link>
                                 </div>
                             );

@@ -46,7 +46,7 @@ function Details() {
                                     <img
                                         className="img-fluid"
                                         src={
-                                            "https://image.tmdb.org/t/p/original" +
+                                            import.meta.env.VITE_POSTER_PATH +
                                             post.backdrop_path
                                         }
                                         alt="movie"

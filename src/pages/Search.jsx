@@ -74,7 +74,7 @@ function Search() {
                                                 {el.poster_path ? (
                                                     <img
                                                         src={
-                                                            "https://image.tmdb.org/t/p/original" +
+                                                            import.meta.env.VITE_POSTER_PATH +
                                                             el.poster_path
                                                         }
                                                         alt="movie"
