@@ -3,17 +3,20 @@ import { createContext, useState } from 'react';
 export const Context = createContext();
 
 export function ContextProvider(props) {
-    const [favourite, setFavourite] = useState(false);
     const [moviesWishList, setmoviesWishList] = useState([]);
 
     const handleFavourite = (el) => {
-        // setFavourite( fav => !fav );
-        setmoviesWishList([moviesWishList, el])
-        // console.log(el)
+        if (el.fav) {
+            el.fav = false;
+            setmoviesWishList( data => data.filter( m => m.id !== el.id ) );
+        } else {
+            el.fav = true;
+            setmoviesWishList( [...moviesWishList, el] );
+        }
     }
 
     return (
-        <Context.Provider value={{ moviesWishList, favourite, handleFavourite }}>
+        <Context.Provider value={{ moviesWishList, handleFavourite }}>
             { props.children }
         </Context.Provider>
     )

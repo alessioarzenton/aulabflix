@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useDebounce from "../Hooks/useDebounce";
 import { Puff } from "react-loader-spinner";
+import { BsStar, BsStarFill } from "react-icons/bs";
+import { Context } from "../Context/Wishlist";
 
 function Search() {
+    const { handleFavourite } = useContext(Context);
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -74,7 +77,8 @@ function Search() {
                                                 {el.poster_path ? (
                                                     <img
                                                         src={
-                                                            import.meta.env.VITE_POSTER_PATH +
+                                                            import.meta.env
+                                                                .VITE_POSTER_PATH +
                                                             el.poster_path
                                                         }
                                                         alt="movie"
@@ -83,16 +87,31 @@ function Search() {
                                                 ) : (
                                                     <img src="https://placehold.co/400x600?text=Movie+Image" />
                                                 )}
-                                                {el.vote_average > 0 && (
-                                                    <div className="vote">
-                                                        <span>
-                                                            {el.vote_average.toFixed(
-                                                                1
-                                                            )}
-                                                        </span>
-                                                    </div>
-                                                )}
                                             </Link>
+                                            {el.vote_average > 0 && (
+                                                <div className="vote">
+                                                    <span>
+                                                        {el.vote_average.toFixed(
+                                                            1
+                                                        )}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            <div className="star">
+                                                {el.fav ? (
+                                                    <BsStarFill
+                                                        onClick={() =>
+                                                            handleFavourite(el)
+                                                        }
+                                                    />
+                                                ) : (
+                                                    <BsStar
+                                                        onClick={() =>
+                                                            handleFavourite(el)
+                                                        }
+                                                    />
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 ))}

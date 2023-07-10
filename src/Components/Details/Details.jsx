@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Puff } from "react-loader-spinner";
+import { BsStar, BsStarFill } from "react-icons/bs";
+import { Context } from "../../Context/Wishlist";
 
 function Details() {
+    const { handleFavourite } = useContext(Context);
     const { id } = useParams();
-    const url = `https://api.themoviedb.org/3/movie/${id}?language=it-IT&api_key=${import.meta.env.VITE_API_KEY}`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?language=it-IT&api_key=${
+        import.meta.env.VITE_API_KEY
+    }`;
     const [post, setPost] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -19,7 +24,7 @@ function Details() {
     }, [url]);
 
     // console.log(post);
-    
+
     return (
         <>
             {loading ? (
@@ -71,14 +76,26 @@ function Details() {
                                         <b>{post.vote_average.toFixed(1)}</b>
                                     </div>
                                 )}
+                                <div className="star">
+                                    {post.fav ? (
+                                        <BsStarFill
+                                            onClick={() => handleFavourite(post)}
+                                        />
+                                    ) : (
+                                        <BsStar
+                                            onClick={() => handleFavourite(post)}
+                                        />
+                                    )}
+                                </div>
                                 {post.original_title && (
-                                    <h1 className="h1">
-                                        {post.title}
-                                    </h1>
+                                    <h1 className="h1">{post.title}</h1>
                                 )}
                                 {post.overview && <p>{post.overview}</p>}
                                 <div className="d-flex">
-                                    <Link to="/" className="btn btn-dark mt-3 me-3">
+                                    <Link
+                                        to="/"
+                                        className="btn btn-dark mt-3 me-3"
+                                    >
                                         Vai alla home
                                     </Link>
                                     <Link

@@ -12,6 +12,17 @@ section.card-list{
             height: 100%;
             aspect-ratio: 350/500;
         }
+        .star{
+            cursor: pointer;
+            position: absolute;
+            bottom: 40px;
+            left: 10px;
+            z-index: 10;
+            svg{
+                height: 30px;
+                width: auto;
+            }
+        }
         .vote{
             position: absolute;
             width: 32px;

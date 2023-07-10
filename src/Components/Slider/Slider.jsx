@@ -23,7 +23,9 @@ const responsive = {
 };
 
 const Slider = ({ title, genre }) => {
+    const { moviesWishList, handleFavourite } = useContext(Context);
 
+    console.log(moviesWishList);
     const url = `https://api.themoviedb.org/3/movie/${genre}?language=it-IT&api_key=${
         import.meta.env.VITE_API_KEY
     }`;
@@ -63,18 +65,19 @@ const Slider = ({ title, genre }) => {
                             return (
                                 <div className="slider" key={el.id}>
                                     <Link to={`/details/${el.id}`}>
-                                    {el.poster_path ? (
-                                        <img
-                                            src={
-                                                import.meta.env
-                                                    .VITE_POSTER_PATH +
-                                                el.poster_path
-                                            }
-                                            alt="movie"
-                                        />
-                                    ) : (
-                                        <img src="https://placehold.co/400x600?text=Movie+Image" />
-                                    )}
+                                        {el.poster_path ? (
+                                            <img
+                                                src={
+                                                    import.meta.env
+                                                        .VITE_POSTER_PATH +
+                                                    el.poster_path
+                                                }
+                                                alt="movie"
+                                            />
+                                        ) : (
+                                            <img src="https://placehold.co/400x600?text=Movie+Image" />
+                                        )}
+                                    </Link>
                                     {el.vote_average > 0 && (
                                         <div className="vote">
                                             <span>
@@ -83,10 +86,20 @@ const Slider = ({ title, genre }) => {
                                         </div>
                                     )}
                                     <div className="star">
-                                        <BsStarFill
-                                        />
+                                        {el.fav ? (
+                                            <BsStarFill
+                                                onClick={() =>
+                                                    handleFavourite(el)
+                                                }
+                                            />
+                                        ) : (
+                                            <BsStar
+                                                onClick={() =>
+                                                    handleFavourite(el)
+                                                }
+                                            />
+                                        )}
                                     </div>
-                                    </Link>
                                 </div>
                             );
                         })}
