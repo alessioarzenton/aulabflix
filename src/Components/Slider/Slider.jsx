@@ -22,11 +22,15 @@ const responsive = {
     },
 };
 
-const Slider = ({ title, genre }) => {
+const Slider = ({ title, genre, cat_id }) => {
     const { handleFavourite, isFav } = useContext(Context);
-    const url = `https://api.themoviedb.org/3/movie/${genre}?language=it-IT&api_key=${
-        import.meta.env.VITE_API_KEY
-    }`;
+    const url = genre
+        ? `https://api.themoviedb.org/3/movie/${genre}?language=it-IT&api_key=${
+                import.meta.env.VITE_API_KEY
+            }`
+        : `https://api.themoviedb.org/3/discover/movie?api_key=${
+                import.meta.env.VITE_API_KEY
+            }&with_genres=${cat_id}`;
     const { data, loading } = useFetchMovies(url, []);
 
     return (

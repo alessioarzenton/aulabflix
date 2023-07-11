@@ -6,12 +6,15 @@ import { Link } from "react-router-dom";
 
 export default function NavBar() {
     const { moviesWishList } = useContext(Context);
-    // console.log(moviesWishList);
+
     return (
         <nav className="navbar bg-dark fixed-top">
             <div className="container-fluid">
                 <Link to="/" className="navbar-brand text-danger">
                     AULABFLIX
+                </Link>
+                <Link to="/genres" className="nav-link me-auto">
+                    Generi
                 </Link>
                 {moviesWishList.length > 0 && (
                     <PDFDownloadLink
@@ -19,10 +22,10 @@ export default function NavBar() {
                         fileName="movielist.pdf"
                         className="btn btn-light"
                     >
-                        {({ blob, url, loading, error }) =>
+                        {({ loading }) =>
                             loading
                                 ? "Loading..."
-                                : `Download Pdf${" - " + moviesWishList.length + ' movies'}`
+                                : `Download - ${moviesWishList.length}`
                         }
                     </PDFDownloadLink>
                 )}
