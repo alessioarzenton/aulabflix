@@ -23,15 +23,11 @@ const responsive = {
 };
 
 const Slider = ({ title, genre }) => {
-    const { moviesWishList, handleFavourite } = useContext(Context);
-
-    console.log(moviesWishList);
+    const { handleFavourite, isFav } = useContext(Context);
     const url = `https://api.themoviedb.org/3/movie/${genre}?language=it-IT&api_key=${
         import.meta.env.VITE_API_KEY
     }`;
     const { data, loading } = useFetchMovies(url, []);
-
-    // console.log(data);
 
     return (
         <div className="slider-parent">
@@ -86,7 +82,7 @@ const Slider = ({ title, genre }) => {
                                         </div>
                                     )}
                                     <div className="star">
-                                        {el.fav ? (
+                                        {isFav(el.id) ? (
                                             <BsStarFill
                                                 onClick={() =>
                                                     handleFavourite(el)

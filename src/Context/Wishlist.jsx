@@ -4,9 +4,10 @@ export const Context = createContext();
 
 export function ContextProvider(props) {
     const [moviesWishList, setmoviesWishList] = useState([]);
+    const isFav = (movie_id) => (moviesWishList.filter( m => movie_id === m.id)).length > 0;
 
     const handleFavourite = (el) => {
-        if (el.fav) {
+        if (isFav(el.id)) {
             el.fav = false;
             setmoviesWishList( data => data.filter( m => m.id !== el.id ) );
         } else {
@@ -16,7 +17,7 @@ export function ContextProvider(props) {
     }
 
     return (
-        <Context.Provider value={{ moviesWishList, handleFavourite }}>
+        <Context.Provider value={{ moviesWishList, handleFavourite, isFav }}>
             { props.children }
         </Context.Provider>
     )

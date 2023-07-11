@@ -6,7 +6,7 @@ import { BsStar, BsStarFill } from "react-icons/bs";
 import { Context } from "../Context/Wishlist";
 
 function Search() {
-    const { handleFavourite } = useContext(Context);
+    const { handleFavourite, isFav } = useContext(Context);
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -95,7 +95,7 @@ function Search() {
                                                 </div>
                                             )}
                                             <div className="star">
-                                                {el.fav ? (
+                                                {isFav(el.id) ? (
                                                     <BsStarFill
                                                         onClick={() =>
                                                             handleFavourite(el)

@@ -5,7 +5,7 @@ import { BsStar, BsStarFill } from "react-icons/bs";
 import { Context } from "../../Context/Wishlist";
 
 function Details() {
-    const { handleFavourite } = useContext(Context);
+    const { handleFavourite, isFav } = useContext(Context);
     const { id } = useParams();
     const url = `https://api.themoviedb.org/3/movie/${id}?language=it-IT&api_key=${
         import.meta.env.VITE_API_KEY
@@ -77,16 +77,16 @@ function Details() {
                                     </div>
                                 )}
                                 <div className="star mt-2">
-                                    {post.fav ? (
+                                    {isFav(post.id) ? (
                                         <BsStarFill
-                                            style={{ cursor: "pointer" }}
+                                            style={{ cursor: "pointer", width: "30px", height: "30px" }}
                                             onClick={() =>
                                                 handleFavourite(post)
                                             }
                                         />
                                     ) : (
                                         <BsStar
-                                            style={{ cursor: "pointer" }}
+                                            style={{ cursor: "pointer", width: "30px", height: "30px" }}
                                             onClick={() =>
                                                 handleFavourite(post)
                                             }
