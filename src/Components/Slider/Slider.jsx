@@ -6,6 +6,7 @@ import { Puff } from "react-loader-spinner";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { useContext } from "react";
 import { Context } from "../../Context/Wishlist";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const responsive = {
     desktop: {
@@ -66,7 +67,7 @@ const Slider = ({ title, genre, cat_id }) => {
                                 <div className="slider" key={el.id}>
                                     <Link to={`/details/${el.id}`}>
                                         {el.poster_path ? (
-                                            <img
+                                            <LazyLoadImage
                                                 src={
                                                     import.meta.env
                                                         .VITE_POSTER_PATH +
@@ -75,7 +76,7 @@ const Slider = ({ title, genre, cat_id }) => {
                                                 alt="movie"
                                             />
                                         ) : (
-                                            <img src="https://placehold.co/400x600?text=Movie+Image" />
+                                            <LazyLoadImage src="https://placehold.co/400x600?text=Movie+Image" />
                                         )}
                                     </Link>
                                     {el.vote_average > 0 && (

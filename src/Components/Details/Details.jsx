@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Puff } from "react-loader-spinner";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { Context } from "../../Context/Wishlist";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function Details() {
     const { handleFavourite, isFav } = useContext(Context);
@@ -48,7 +49,7 @@ function Details() {
                         <div className="row">
                             <div className="col-12 col-md-7">
                                 {post.backdrop_path ? (
-                                    <img
+                                    <LazyLoadImage
                                         className="img-fluid"
                                         src={
                                             import.meta.env.VITE_POSTER_PATH +
@@ -58,7 +59,7 @@ function Details() {
                                         style={{ borderRadius: "10px" }}
                                     />
                                 ) : (
-                                    <img
+                                    <LazyLoadImage
                                         className="img-fluid"
                                         src="https://placehold.co/600x400?text=Movie+Image"
                                         alt="movie"

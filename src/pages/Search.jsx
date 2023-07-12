@@ -4,6 +4,7 @@ import useDebounce from "../Hooks/useDebounce";
 import { Puff } from "react-loader-spinner";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { Context } from "../Context/Wishlist";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function Search() {
     const { handleFavourite, isFav } = useContext(Context);
@@ -72,7 +73,7 @@ function Search() {
                                         <div className="wrapper">
                                             <Link to={`/details/${el.id}`}>
                                                 {el.poster_path ? (
-                                                    <img
+                                                    <LazyLoadImage
                                                         src={
                                                             import.meta.env
                                                                 .VITE_POSTER_PATH +
@@ -82,7 +83,7 @@ function Search() {
                                                         className="img-fluid"
                                                     />
                                                 ) : (
-                                                    <img src="https://placehold.co/400x600?text=Movie+Image" />
+                                                    <LazyLoadImage src="https://placehold.co/400x600?text=Movie+Image" />
                                                 )}
                                             </Link>
                                             {el.vote_average > 0 && (
