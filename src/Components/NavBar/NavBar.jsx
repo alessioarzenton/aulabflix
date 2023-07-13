@@ -13,9 +13,6 @@ export default function NavBar() {
                 <Link to="/" className="navbar-brand text-danger">
                     AULABFLIX
                 </Link>
-                <Link to="/genres" className="nav-link me-auto">
-                    Generi
-                </Link>
                 {moviesWishList.length > 0 && (
                     <PDFDownloadLink
                         document={<PdfDocument data={moviesWishList} />}

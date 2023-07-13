@@ -1,14 +1,35 @@
 import Hero from "../Components/Hero/Hero";
 import Slider from "../Components/Slider/Slider";
+import useFetchGenres from "../Hooks/useFetchGenres";
+import { Puff } from "react-loader-spinner";
 
 function Home() {
+    const url = `https://api.themoviedb.org/3/genre/movie/list?language=it-IT&api_key=${
+        import.meta.env.VITE_API_KEY
+    }`;
+
+    const { data, loading } = useFetchGenres(url, []);
+
     return (
         <>
             <Hero />
-            <Slider title="Titoli del momento" genre="now_playing" />
-            <Slider title="Popolari" genre="popular" />
-            <Slider title="Più votati" genre="top_rated" />
-            <Slider title="In arrivo" genre="upcoming" />
+            {loading ? (
+                <Puff
+                    height="80"
+                    width="80"
+                    radius={1}
+                    color="#ffffff"
+                    ariaLabel="puff-loading"
+                    wrapperStyle={{ margin: "20px auto" }}
+                    wrapperClass="justify-content-center"
+                    visible={true}
+                />
+            ) : (
+                data &&
+                data.map((g) => (
+                    <Slider key={g.id} title={g.name} cat_id={g.id} />
+                ))
+            )}
         </>
     );
 }

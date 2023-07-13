@@ -4,7 +4,6 @@ import Details from "./Components/Details/Details";
 import Search from "./pages/Search";
 import { ContextProvider } from "./Context/Wishlist";
 import NavBar from "./Components/NavBar/NavBar";
-import Genres from "./pages/Genres";
 
 function App() {
     return (
@@ -13,7 +12,6 @@ function App() {
                 <NavBar />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="genres" element={<Genres />} />
                     <Route path="search" element={<Search />} />
                     <Route path="details/:id" element={<Details />} />
                 </Routes>

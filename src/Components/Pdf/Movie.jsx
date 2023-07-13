@@ -7,6 +7,7 @@ import {
     Image,
 } from "@react-pdf/renderer";
 import moment from "moment";
+import { BsStarFill } from "react-icons/bs";
 
 const POSTER_PATH = "https://image.tmdb.org/t/p/w154";
 
@@ -20,26 +21,30 @@ const styles = StyleSheet.create({
         flexGrow: 1,
     },
     movieContainer: {
-        backgroundColor: "#f6f6f5",
         display: "flex",
         flexDirection: "row",
         padding: 5,
     },
     movieDetails: {
         display: "flex",
-        marginLeft: 5,
+        marginLeft: 10,
     },
     movieTitle: {
         fontSize: 15,
+        fontWeight: 700,
         marginBottom: 10,
     },
     movieOverview: {
-        fontSize: 10,
+        fontSize: 12,
+        maxWidth: "100%",
+        wordWrap: "break-word",    
     },
-
     image: {
-        height: 200,
-        width: 150,
+        aspectRatio: "4/6",
+        height: "100%",
+        width: "100%",
+        maxWidth: "150px",
+        objectFit: "cover"
     },
     subtitle: {
         display: "flex",
@@ -52,10 +57,6 @@ const styles = StyleSheet.create({
     vote: {
         display: "flex",
         flexDirection: "row",
-    },
-    rating: {
-        height: 10,
-        width: 10,
     },
     vote_text: {
         fontSize: 10,
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
     },
     overviewContainer: {
         minHeight: 110,
+        maxWidth: "400px"
     },
     detailsFooter: {
         display: "flex",
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
     },
     lang: {
         fontSize: 8,
-        fontWeight: 700,
+        fontWeight: "bolder",
     },
     vote_average: {
         fontSize: 8,
@@ -111,10 +113,6 @@ export function PdfDocument(props) {
                                       </Text>
                                       <View style={styles.subtitle}>
                                           <View style={styles.vote}>
-                                              <Image
-                                                  source="star.png"
-                                                  style={styles.rating}
-                                              />
                                               <Text style={styles.vote_text}>
                                                   {a.vote_count}
                                               </Text>

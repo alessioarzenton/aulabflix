@@ -15,7 +15,6 @@ function Search() {
     const debounceSearched = useDebounce(query, 1000);
 
     useEffect(() => {
-        setLoading(true);
         API(debounceSearched).then((r) => {
             setLoading(false);
             setData(r);
@@ -38,7 +37,10 @@ function Search() {
                             placeholder="star w..."
                             aria-label="Search"
                             value={query}
-                            onChange={(e) => setQuery(e.target.value)}
+                            onChange={(e) => {
+                                setQuery(e.target.value)
+                                setLoading(true)
+                            }}
                         />
                         <button
                             className="btn btn-info"
