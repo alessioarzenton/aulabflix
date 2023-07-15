@@ -17,7 +17,7 @@ export function ContextProvider(props) {
     }
 
     return (
-        <Context.Provider value={{ moviesWishList, handleFavourite, isFav }}>
+        <Context.Provider value={{ moviesWishList, setmoviesWishList, handleFavourite, isFav }}>
             { props.children }
         </Context.Provider>
     )
