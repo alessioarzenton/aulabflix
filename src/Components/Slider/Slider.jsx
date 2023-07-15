@@ -6,15 +6,23 @@ import { Puff } from "react-loader-spinner";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { useContext } from "react";
 import { Context } from "../../Context/Wishlist";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const responsive = {
+    xLargeDesktop: {
+        breakpoint: { max: 4000, min: 3000 },
+        items: 6,
+    },
+    largeDesktop: {
+        breakpoint: { max: 3000, min: 2000 },
+        items: 5,
+    },
     desktop: {
-        breakpoint: { max: 3000, min: 992 },
+        breakpoint: { max: 2000, min: 1024 },
         items: 4,
     },
     tablet: {
-        breakpoint: { max: 992, min: 768 },
+        breakpoint: { max: 1024, min: 768 },
         items: 3,
     },
     mobile: {
