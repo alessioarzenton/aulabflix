@@ -17,7 +17,7 @@ export default function NavBar() {
                 </Link>
                 {moviesWishList.length > 0 && (
                     <>
-                        <div className="wrapper-buttons">
+                        <div className="d-flex">
                             <button
                                 className="btn btn-warning me-2"
                                 onClick={() => setmoviesWishList([])}
@@ -28,6 +28,11 @@ export default function NavBar() {
                                 document={<PdfDocument data={moviesWishList} />}
                                 fileName="movielist.pdf"
                                 className="btn btn-light"
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "5px",
+                                }}
                             >
                                 {({ loading }) =>
                                     loading ? (
@@ -41,7 +46,12 @@ export default function NavBar() {
                                             visible={true}
                                         />
                                     ) : (
-                                        `Download - ${moviesWishList.length}`
+                                        <>
+                                            <BsFillFilePdfFill />{" "}
+                                            <span>
+                                                - {moviesWishList.length}
+                                            </span>
+                                        </>
                                     )
                                 }
                             </PDFDownloadLink>

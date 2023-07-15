@@ -7,7 +7,6 @@ import {
     Image,
 } from "@react-pdf/renderer";
 import moment from "moment";
-import { BsStarFill } from "react-icons/bs";
 
 const POSTER_PATH = "https://image.tmdb.org/t/p/w154";
 
