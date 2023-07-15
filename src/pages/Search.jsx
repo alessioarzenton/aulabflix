@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useDebounce from "../Hooks/useDebounce";
 import { Puff } from "react-loader-spinner";
-import { BsStar, BsStarFill } from "react-icons/bs";
+import { BsFillTrashFill, BsStar, BsStarFill } from "react-icons/bs";
 import { Context } from "../Context/Wishlist";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
@@ -46,7 +46,7 @@ function Search() {
                             className="btn btn-info"
                             onClick={() => setQuery("")}
                         >
-                            Reset
+                            <BsFillTrashFill />
                         </button>
                     </div>
                 </div>

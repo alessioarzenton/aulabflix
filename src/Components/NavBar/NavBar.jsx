@@ -3,7 +3,8 @@ import { PdfDocument } from "../Pdf/Movie";
 import { useContext } from "react";
 import { Context } from "../../Context/Wishlist";
 import { Link } from "react-router-dom";
-import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillFilePdfFill, BsFillTrashFill } from "react-icons/bs";
+import { Puff } from "react-loader-spinner";
 
 export default function NavBar() {
     const { moviesWishList, setmoviesWishList } = useContext(Context);
@@ -29,9 +30,19 @@ export default function NavBar() {
                                 className="btn btn-light"
                             >
                                 {({ loading }) =>
-                                    loading
-                                        ? "Loading..."
-                                        : `Download - ${moviesWishList.length}`
+                                    loading ? (
+                                        <Puff
+                                            height="20"
+                                            width="20"
+                                            radius={1}
+                                            color="#000000"
+                                            ariaLabel="puff-loading"
+                                            wrapperClass="justify-content-center"
+                                            visible={true}
+                                        />
+                                    ) : (
+                                        `Download - ${moviesWishList.length}`
+                                    )
                                 }
                             </PDFDownloadLink>
                         </div>
