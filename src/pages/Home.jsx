@@ -1,3 +1,5 @@
+// import Reader from "../Components/Reader/Reader";
+// import Writer from "../Components/Writer/Writer";
 import Hero from "../Components/Hero/Hero";
 import Slider from "../Components/Slider/Slider";
 import useFetchGenres from "../Hooks/useFetchGenres";
@@ -12,6 +14,8 @@ function Home() {
 
     return (
         <>
+            {/* <Reader />
+            <Writer /> */}
             <Hero />
             {loading ? (
                 <Puff
